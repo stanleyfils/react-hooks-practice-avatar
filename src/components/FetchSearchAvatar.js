@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const FetchSearchAvatar = () => {
   const [avatar, setAvatar] = useState([]);
@@ -7,9 +7,17 @@ const FetchSearchAvatar = () => {
 
   const fetchAvatar = () => {
     fetch(`https://sampleapis.com/avatar/api/characters`)
-    .then((response) => response.json())
-    .then((data) => setAvatar(data))
-    .catch(error) => console.log("Error: ", error))
+      .then((response) => response.json())
+      .then((data) => setAvatar(data))
+      .catch((error) => console.log("Error: ", error));
   };
 
-}
+  const handleSubmit = () => {
+    event.preventDefault();
+    fetchAvatar();
+  };
+
+  const handleChange = () => {
+    setQuery(event.target.value);
+  };
+};
