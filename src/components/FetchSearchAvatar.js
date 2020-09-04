@@ -12,12 +12,27 @@ const FetchSearchAvatar = () => {
       .catch((error) => console.log("Error: ", error));
   };
 
-  const handleSubmit = () => {
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+    fetchAvatar();
+  };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     fetchAvatar();
   };
 
-  const handleChange = () => {
-    setQuery(event.target.value);
-  };
+  return (
+    <>
+      <div>
+        <h1>Avatar: The Last Airbender</h1>
+        <form onSubmit={handleSubmit}>
+          <input onChange={handleChange} />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </>
+  );
 };
+
+export default FetchSearchAvatar;
