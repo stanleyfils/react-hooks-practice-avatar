@@ -12,25 +12,25 @@ const FetchSearchAvatar = () => {
       .catch((error) => console.log("Error: ", error));
   };
 
-  const handleChange = (event) => {
-    setQuery(event.target.value);
-    fetchAvatar();
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     fetchAvatar();
   };
 
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+    fetchAvatar();
+  };
+
   return (
     <>
-      <div>
-        <h1>Avatar: The Last Airbender</h1>
-        <form onSubmit={handleSubmit}>
-          <input onChange={handleChange} />
-          <button type="submit">Search</button>
-        </form>
-      </div>
+      <h1>Avatar Characters</h1>
+
+      <form onSubmit={handleSubmit}>
+        <input onChange={handleChange} />
+        <button type="submit">Search</button>
+      </form>
+      <pre>{JSON.stringify(avatar, null, 2)}</pre>
     </>
   );
 };
