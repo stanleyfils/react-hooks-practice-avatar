@@ -2,12 +2,10 @@ import React from "react";
 import FetchSearchAvatar from "./components/FetchSearchAvatar";
 import "./styles.css";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <FetchSearchAvatar />
     </div>
   );
 }
-
-export default App;

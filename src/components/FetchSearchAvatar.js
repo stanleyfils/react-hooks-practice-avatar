@@ -5,16 +5,12 @@ const FetchSearchAvatar = () => {
 
   const [query, setQuery] = useState("");
 
+  const baseURL = "https://sampleapis.com/avatar/api/characters";
   const fetchAvatar = () => {
-    fetch(`https://sampleapis.com/avatar/api/characters`)
+    fetch(`${baseURL}?name=${query}`)
       .then((response) => response.json())
       .then((data) => setAvatar(data))
       .catch((error) => console.log("Error: ", error));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetchAvatar();
   };
 
   const handleChange = (event) => {
@@ -22,15 +18,28 @@ const FetchSearchAvatar = () => {
     fetchAvatar();
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetchAvatar();
+  };
+
+  const results = avatar.map((value) => {
+    return (
+      <>
+        <h4>{value.Name}</h4>
+      </>
+    );
+  });
+
   return (
     <>
       <h1>Avatar Characters</h1>
-
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} />
+        <input onChange={handleChange} placeholder="Search Character" />
         <button type="submit">Search</button>
       </form>
-      <pre>{JSON.stringify(avatar, null, 2)}</pre>
+
+      {results}
     </>
   );
 };
